@@ -37,6 +37,8 @@ namespace ToolsForROOT
 
  void RandomGenerator::setRangeForNormalDistribution( const double& xmin, const double& xmax )
  {
+  if ( xmin == xmax )
+   return;
   fRangeNormalMin = xmin;
   fRangeNormalMax = xmax;
  }

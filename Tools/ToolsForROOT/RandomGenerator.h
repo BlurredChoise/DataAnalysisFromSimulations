@@ -28,8 +28,8 @@ namespace ToolsForROOT
 
   private:
    TRandom3* ptrGenerator = nullptr;
-   double fRangeNormalMin = 0;
-   double fRangeNormalMax = 0;
+   double fRangeNormalMin = -1.0;
+   double fRangeNormalMax = 1.0;
  };
 };
 
