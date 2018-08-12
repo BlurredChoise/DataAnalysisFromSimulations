@@ -17,11 +17,11 @@ namespace ToolsForROOT
 
  bool Message::error( const bool value_to_check, std::string message_to_display )
  {
-  return check( value_to_check, "[ERROR] " + message_to_display );
+  return !check( value_to_check, "[ERROR] " + message_to_display );
  }
 
  bool Message::warning( const bool value_to_check, std::string message_to_display )
  {
-  return check( value_to_check, "[WARNING] " + message_to_display );
+  return !check( value_to_check, "[WARNING] " + message_to_display );
  }
 };
