@@ -1,0 +1,4 @@
+use_z_smearing=true
+sigma_z=2.0
+use_energy_deposition_smearing=true
+
