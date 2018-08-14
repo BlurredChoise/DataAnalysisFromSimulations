@@ -1,3 +1,5 @@
 /StudyOfRelativeEfficiency/build/*
 /Tools/ToolsForGATE/GlobalActorReader/build/*
 /Tools/j-pet-framework/*
+/build/*
+/Tools/ToolsForG4MC/*

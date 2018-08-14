@@ -30,6 +30,11 @@ void REAnalysis::analyzeDataSet()
  calcThetaAndUpdateHitograms();
 }
 
+double REAnalysis::getEnergyDepositionFromTheta( double& theta )
+{
+ return 511.0 * ( 1.0 - 1.0 / ( 2.0 - TMath::Cos( TMath::DegToRad() * theta ) ) );
+}
+
 void REAnalysis::calcThetaAndUpdateHitograms()
 {
  REData* hAs1 = nullptr;
@@ -56,6 +61,7 @@ void REAnalysis::calcThetaAndUpdateHitograms()
  fH1FakeTheta->Fill( theta_fake );
  fH1TrueAndFakeTheta->Fill( theta_true );
  fH1TrueAndFakeTheta->Fill( theta_fake );
+ fH1EnergyDepositionFromTheta->Fill( getEnergyDepositionFromTheta( theta_true ) );
 }
 
 void REAnalysis::updateHits( REData** hAs1, REData** hAs2, REData** hBs1 )

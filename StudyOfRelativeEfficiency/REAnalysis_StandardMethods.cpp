@@ -96,6 +96,7 @@ void REAnalysis::saveHistograms( std::string output_file_name )
  ToolsForROOT::ReadAndSave::saveToFile( file, fH1TrueTheta );
  ToolsForROOT::ReadAndSave::saveToFile( file, fH1FakeTheta );
  ToolsForROOT::ReadAndSave::saveToFile( file, fH1TrueAndFakeTheta );
+ ToolsForROOT::ReadAndSave::saveToFile( file, fH1EnergyDepositionFromTheta );
  
  ToolsForROOT::ReadAndSave::closeFile( file );
 
@@ -109,6 +110,7 @@ void REAnalysis::initHistograms()
  fH1TrueTheta = ToolsForROOT::HistogramsCreator::getTH1F( "fH1TrueTheta", 180, -0.5, 180.5, "#theta_{True} [deg]", "Counts" );
  fH1FakeTheta = ToolsForROOT::HistogramsCreator::getTH1F( "fH1FakeTheta", 180, -0.5, 180.5, "#theta_{Fake} [deg]", "Counts" );
  fH1TrueAndFakeTheta = ToolsForROOT::HistogramsCreator::getTH1F( "fH1TrueAndFakeTheta", 180, -0.5, 180.5, "#theta_{True} and #theta_{Fake} [deg]", "Counts" );
+ fH1EnergyDepositionFromTheta = ToolsForROOT::HistogramsCreator::getTH1F( "fH1EnergyDepositionFromTheta",  351 * 4, -0.5, 350.5, "#Delta E [keV]", "Counts" );
 }
 
 void REAnalysis::deleteHistograms()

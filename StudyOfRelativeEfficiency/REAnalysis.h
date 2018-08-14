@@ -58,6 +58,7 @@ class REAnalysis : public ToolsForAnalysis::AnalysisClass
   void updateHits( REData** hAs1, REData** hAs2, REData** hBs1 );
   void separateByTime( REData** hAs1, REData** hAs2, REData** hBs1 );
   void separateByTrackID( REData** hAs1, REData** hAs2, REData** hBs1 );
+  double getEnergyDepositionFromTheta( double& theta );
 
  private: 
   std::vector<REData> fDatas;
@@ -78,6 +79,7 @@ class REAnalysis : public ToolsForAnalysis::AnalysisClass
   TH1F* fH1TrueTheta;
   TH1F* fH1FakeTheta;
   TH1F* fH1TrueAndFakeTheta;
+  TH1F* fH1EnergyDepositionFromTheta;
 
  // Section: CONDITIONS
  public:

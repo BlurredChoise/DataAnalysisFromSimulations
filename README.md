@@ -22,16 +22,6 @@ In **j-pet-framework** directory please call:
 git submodule init
 git submodule update
 ```
-## Preparing project for use:
-1. Building of **j-pet-framework**:
-```
-cd Tools/j-pet-framework
-mkdir build
-cd build
-build ..
-cmake ..
-make
-```
 
 
 
