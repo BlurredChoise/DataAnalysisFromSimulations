@@ -51,7 +51,7 @@ class REAnalysis : public ToolsForAnalysis::AnalysisClass
   bool fIsRangeON = false;
   unsigned int fSeed = 0;
 
- // Section: ANALYSIS
+ // Section: ANALYSIS 
  private:
   void analyzeDataSet();
   void calcThetaAndUpdateHitograms();

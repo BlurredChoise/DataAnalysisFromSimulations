@@ -95,7 +95,7 @@ void REAnalysis::separateByTrackID( REData** hAs1, REData** hAs2, REData** hBs1 
   *hAs2 = fHits[ 2 ];
   *hBs1 = fHits[ 0 ];
  }
-}
+} 
 
 bool REAnalysis::conditionHitsNumber()
 {
