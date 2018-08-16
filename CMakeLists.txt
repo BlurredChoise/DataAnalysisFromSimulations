@@ -10,3 +10,4 @@ add_definitions(${Framework_DEFINITIONS})
 add_definitions(-std=c++11 -Wall -Wunused-parameter)
 
 add_subdirectory(Tools/ToolsForG4MC)
+add_subdirectory(TXTConverters/TXTConverterGeant4)
