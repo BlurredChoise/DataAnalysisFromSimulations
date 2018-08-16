@@ -18,6 +18,15 @@ namespace ToolsForROOT
   return  histogram; 
  }
 
+ TH3F* HistogramsCreator::getTH3F( std::string histogram_name_and_title, unsigned int bins_number, double xyz_min_value, double xyz_max_value, std::string axis_x_title, std::string axis_y_title,  std::string axis_z_title )
+ {
+  TH3F* histogram = new TH3F( histogram_name_and_title.c_str(), histogram_name_and_title.c_str(), bins_number, xyz_min_value, xyz_max_value, bins_number, xyz_min_value, xyz_max_value, bins_number, xyz_min_value, xyz_max_value );
+  histogram->GetXaxis()->SetTitle( axis_x_title.c_str() );
+  histogram->GetYaxis()->SetTitle( axis_y_title.c_str() );
+  histogram->GetYaxis()->SetTitle( axis_z_title.c_str() );
+  return  histogram;
+ }
+
  void HistogramsCreator::createTwoTH1F( TH1F* histogram_1, TH1F* histogram_2, std::string histogram_1_name_and_title, std::string histogram_2_name_and_title, unsigned int bins_number, double x_min_value, double x_max_value, std::string axis_x_title, std::string axis_y_title )
  {
   histogram_1 = getTH1F( histogram_1_name_and_title, bins_number, x_min_value, x_max_value, axis_x_title, axis_y_title );
