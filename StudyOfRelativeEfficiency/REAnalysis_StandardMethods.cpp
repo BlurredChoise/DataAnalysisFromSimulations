@@ -32,12 +32,10 @@ void REAnalysis::analyzeEntry()
  REData data = *( dynamic_cast< REData* >( fCreator->getData() ) );
  if ( data.getEventID() != fEventID )
  {
-  analyzeDataSet();
+  if ( fEventID > -1 )
+   analyzeDataSet();
   fEventID = data.getEventID();
   fDatas.clear();
-  fHits[ 0 ] = nullptr;
-  fHits[ 1 ] = nullptr;
-  fHits[ 2 ] = nullptr;
  }
  fDatas.push_back( data );
 }
