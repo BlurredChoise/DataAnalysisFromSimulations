@@ -9,14 +9,4 @@ add_definitions(${Framework_DEFINITIONS})
 
 add_definitions(-std=c++11 -Wall -Wunused-parameter)
 
-##download input files and config files
-# The script shouldn't do anything if the data is present and correct.
-#set(DOWNLOAD_DATA ${CMAKE_CURRENT_SOURCE_DIR}/download_data.sh ${CMAKE_CURRENT_SOURCE_DIR})
-#execute_process( COMMAND ${DOWNLOAD_DATA} )
-#add_subdirectory(ScopeLoaderExample)
-#add_subdirectory(ScopeAnalysis)
-#add_subdirectory(LargeBarrelAnalysis)
-#add_subdirectory(VelocityCalibration)
-#add_subdirectory(TimeCalibration)
-#add_subdirectory(NewAnalysisTemplate)
-#add_subdirectory(modules)
+add_subdirectory(Tools/ToolsForG4MC)
