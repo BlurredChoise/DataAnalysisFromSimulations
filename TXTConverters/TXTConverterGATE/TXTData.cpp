@@ -41,3 +41,7 @@ unsigned int TXTData::getScatteringIndex() const { return fScatteringIndex; }
 void TXTData::setEnergy( const double& energy) { fEnergy = energy; }
 
 double TXTData::getEnergy() const { return fEnergy; }
+
+void TXTData::setEmissionEnergy( const double& energy) { fEmissionEnergy = energy; }
+
+double TXTData::getEmissionEnergy() const { return fEmissionEnergy; }

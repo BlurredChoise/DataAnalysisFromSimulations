@@ -53,6 +53,8 @@ void TXTDataCreator::extractDataFromEntry()
  fData.setTime( fReader->getGlobalTime() );
 
  fData.setEnergy( fReader->getEnergyBeforeProcess() );
+
+ fData.setEmissionEnergy( fReader->getEmissionEnergyFromSource() );
 }
 
 ToolsForAnalysis::AnalysisData* TXTDataCreator::getData() { return &fData; }

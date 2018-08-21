@@ -43,6 +43,7 @@ class ThreeHitsPerEventModel : public TXTModel
 
  private: 
   std::vector<TXTData> fDatas;
+  TXTData hit1, hit2, hit3;
   std::fstream fTXTFile;
   bool fIsOpenedTXTFile = false;
 
@@ -59,16 +60,26 @@ class ThreeHitsPerEventModel : public TXTModel
   TH2F* h2HitPositionXY;
   TH2F* h2HitPositionXZ;
   TH2F* h2HitPositionYZ;
-  TH3F* h3HitPositionXYZ;
-  TH2F* h2ScattersPerTrack;
+  TH2F* h2ScattersPerTrack_1_vs_2;
+  TH2F* h2ScattersPerTrack_1_vs_3;
+  TH2F* h2ScattersPerTrack_2_vs_3;
+  TH1F* h1ScatteringKind;
   bool fHistogramSavedToFile = false;
 
  // Section: CONDITIONS
  private:
   bool conditionHitsNumber();
   bool conditionHitsScintilators();
+  bool conditionEnergyConditionForFirstScatter();
  private:
   const unsigned int kRequiredHitsNumber = 3;
+  const double kWindowSize = 40000.0;
+
+ private: //Counters
+  unsigned int fTotalEventsNumber = 0;
+  unsigned int fFirstCondition = 0;
+  unsigned int fSecondCondition = 0;
+  unsigned int fThirdCondition = 0;
  
 };
 

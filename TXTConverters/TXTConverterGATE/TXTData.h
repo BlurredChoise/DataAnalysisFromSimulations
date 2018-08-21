@@ -38,6 +38,9 @@ class TXTData : public ToolsForAnalysis::AnalysisData
 
   void setEnergy( const double& energy);
   double getEnergy() const;
+
+  void setEmissionEnergy( const double& energy );
+  double getEmissionEnergy() const;
   
  private:
   double fEnergyDeposition; // [keV]
@@ -48,6 +51,7 @@ class TXTData : public ToolsForAnalysis::AnalysisData
   double fTime; //[ns]
   unsigned int fScatteringIndex;
   double fEnergy;//[keV]
+  double fEmissionEnergy;//[keV]
   
 };
 
