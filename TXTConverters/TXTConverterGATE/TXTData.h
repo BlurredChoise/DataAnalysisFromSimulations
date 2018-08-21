@@ -35,6 +35,9 @@ class TXTData : public ToolsForAnalysis::AnalysisData
 
   void setScatteringIndex( const unsigned int index );
   unsigned int getScatteringIndex() const;
+
+  void setEnergy( const double& energy);
+  double getEnergy() const;
   
  private:
   double fEnergyDeposition; // [keV]
@@ -44,6 +47,7 @@ class TXTData : public ToolsForAnalysis::AnalysisData
   TVector3 fScintilatorPosition; //[(cm, cm, cm)]
   double fTime; //[ns]
   unsigned int fScatteringIndex;
+  double fEnergy;//[keV]
   
 };
 

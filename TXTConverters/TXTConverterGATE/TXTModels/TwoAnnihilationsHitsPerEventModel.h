@@ -59,9 +59,11 @@ class TwoAnnihilationsHitsPerEventModel : public TXTModel
  private: //Histograms
   TH1F* h1EnergyDeposition = nullptr;
   TH1F* h1TimeDifference = nullptr;
+  TH1F* h1Energy = nullptr;
   TH2F* h2HitPositionXY = nullptr;
   TH2F* h2HitPositionXZ = nullptr;
   TH2F* h2HitPositionYZ = nullptr;
+  TH1F* h1ScattersNumber = nullptr;
   bool fHistogramSavedToFile = false;
 
  // Section: CONDITIONS
@@ -69,8 +71,19 @@ class TwoAnnihilationsHitsPerEventModel : public TXTModel
   bool conditionHitsNumber();
   bool conditionHitsScintilators();
   bool conditionHitsKind();
+  bool conditionEnergyBeforeScattering();
  private:
   const unsigned int kRequiredHitsNumber = 2;
+
+ private: //Counters
+  unsigned int fTotalEventsNumber = 0;
+  unsigned int fFirstFilter = 0;
+  unsigned int fSecondFilter = 0;
+  unsigned int fThirdFilter = 0;
+  unsigned int fFourthFilter = 0;
+  
+
+ 
  
 };
 

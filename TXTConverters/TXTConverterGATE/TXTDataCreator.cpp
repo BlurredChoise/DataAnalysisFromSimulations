@@ -51,6 +51,8 @@ void TXTDataCreator::extractDataFromEntry()
  fData.setScintilatorPosition( fReader->getScintilatorPosition() * 0.1 ); //conversion from milimeters to centimeters
 
  fData.setTime( fReader->getGlobalTime() );
+
+ fData.setEnergy( fReader->getEnergyBeforeProcess() );
 }
 
 ToolsForAnalysis::AnalysisData* TXTDataCreator::getData() { return &fData; }

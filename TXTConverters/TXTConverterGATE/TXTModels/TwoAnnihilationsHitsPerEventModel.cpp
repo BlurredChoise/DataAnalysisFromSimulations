@@ -43,6 +43,8 @@ void TwoAnnihilationsHitsPerEventModel::initHistograms()
  h2HitPositionXY = ToolsForROOT::HistogramsCreator::getTH2F( "h2HitPositionXY", 121 * 4, -60.5, 60.5, 121 * 4, -60.5, 60.5, "x [cm]", "y [cm]" );
  h2HitPositionXZ = ToolsForROOT::HistogramsCreator::getTH2F( "h2HitPositionXZ", 121 * 4, -60.5, 60.5, 121 * 4, -60.5, 60.5, "x [cm]", "z [cm]" );
  h2HitPositionYZ = ToolsForROOT::HistogramsCreator::getTH2F( "h2HitPositionYZ", 121 * 4, -60.5, 60.5, 121 * 4, -60.5, 60.5, "y [cm]", "z [cm]" );
+ h1Energy = ToolsForROOT::HistogramsCreator::getTH1F( "h1Energy", 601, -0.5, 600.5, "E [keV]", "Counts" );
+ h1ScattersNumber = ToolsForROOT::HistogramsCreator::getTH1F( "h1ScattersNumber", 21, -0.5, 20.5, "Scatters number", "Counts" );
 }
 
 void TwoAnnihilationsHitsPerEventModel::deleteHistograms()
@@ -57,6 +59,8 @@ void TwoAnnihilationsHitsPerEventModel::deleteHistograms()
  delete h2HitPositionXY;
  delete h2HitPositionXZ;
  delete h2HitPositionYZ;
+ delete h1Energy;
+ delete h1ScattersNumber;
 }
 
 void TwoAnnihilationsHitsPerEventModel::saveHistograms()
@@ -71,12 +75,21 @@ void TwoAnnihilationsHitsPerEventModel::saveHistograms()
  ToolsForROOT::ReadAndSave::saveToFile( file, h2HitPositionXY );
  ToolsForROOT::ReadAndSave::saveToFile( file, h2HitPositionXZ );
  ToolsForROOT::ReadAndSave::saveToFile( file, h2HitPositionYZ );
+ ToolsForROOT::ReadAndSave::saveToFile( file, h1Energy );
+ ToolsForROOT::ReadAndSave::saveToFile( file, h1ScattersNumber );
  fHistogramSavedToFile = true;
  ToolsForROOT::ReadAndSave::closeFile( file );
 
  std::cout << "Saved " << fCurrentEventsNumberSaved << " events from " << fEventsNumberToSave << " required " << std::endl;
  double status = 100.0 * static_cast<double>( fCurrentEventsNumberSaved ) / static_cast<double>( fEventsNumberToSave );
  std::cout << " Task accomplished in " << status << " percents" << std::endl;
+
+ std::cout << "fTotalEventsNumber = " << fTotalEventsNumber << std::endl;
+ std::cout << "fFirstFilter = " << fFirstFilter << std::endl;
+ std::cout << "fSecondFilter = " << fSecondFilter << std::endl;
+ std::cout << "fThirdFilter = " << fThirdFilter << std::endl;
+ std::cout << "fFourthFilter = " << fFourthFilter << std::endl;
+
 }
 
 void TwoAnnihilationsHitsPerEventModel::fillHistograms( TXTData& data )
@@ -88,14 +101,38 @@ void TwoAnnihilationsHitsPerEventModel::fillHistograms( TXTData& data )
  h2HitPositionXY->Fill( hit.x(), hit.y() );
  h2HitPositionXZ->Fill( hit.x(), hit.z() );
  h2HitPositionYZ->Fill( hit.y(), hit.z() );
+ h1Energy->Fill( data.getEnergy() );
 }
 
 void TwoAnnihilationsHitsPerEventModel::analyzeEvent()
 {
- bool passed = conditionHitsNumber() && conditionHitsKind() && conditionHitsScintilators();
+
+ ++fTotalEventsNumber;
+
+ if ( !conditionHitsNumber() )
+  return;
+
+ ++fFirstFilter;
+
+ if ( !conditionHitsKind() )
+  return;
+
+ ++fSecondFilter;
+
+ if ( !conditionHitsScintilators() )
+  return;
+
+ ++fThirdFilter;
+
+ if ( !conditionEnergyBeforeScattering() )
+  return;
+
+ ++fFourthFilter;
+
+ /*bool passed = conditionHitsNumber() && conditionHitsKind() && conditionHitsScintilators();
 
  if( !passed )
-  return;
+  return;*/
 
  if ( !fIsOpenedTXTFile)
  {
@@ -144,8 +181,19 @@ bool TwoAnnihilationsHitsPerEventModel::conditionHitsKind()
   }
   else if ( annihilation_hit_per_track_1 && annihilation_hit_per_track_2 )
   {
+   h1ScattersNumber->Fill( fHitTrack1.getScatteringIndex() );
+   h1ScattersNumber->Fill( fHitTrack2.getScatteringIndex() );
    return true;
   }
  }
  return false;
+}
+
+bool TwoAnnihilationsHitsPerEventModel::conditionEnergyBeforeScattering()
+{
+ //Becouse there is small fluctuaction of gammas energy - something like: 510.99999999 and 511.000001 - and it normal numerical problem.
+ bool e1 = TMath::Abs(511.0 - fHitTrack1.getEnergy() ) < 0.000001;
+ bool e2 = TMath::Abs(511.0 - fHitTrack2.getEnergy() ) < 0.000001;
+
+ return e1 && e2;
 }

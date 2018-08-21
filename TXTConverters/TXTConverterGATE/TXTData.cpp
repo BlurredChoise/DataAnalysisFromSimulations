@@ -37,3 +37,7 @@ double TXTData::getTime() const { return fTime; }
 void TXTData::setScatteringIndex( const unsigned int index ) { fScatteringIndex = index; }
 
 unsigned int TXTData::getScatteringIndex() const { return fScatteringIndex; }
+
+void TXTData::setEnergy( const double& energy) { fEnergy = energy; }
+
+double TXTData::getEnergy() const { return fEnergy; }
