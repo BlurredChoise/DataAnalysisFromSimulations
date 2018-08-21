@@ -3,6 +3,7 @@
 #include "../../Tools/ToolsForGATE/GlobalActorReader/GlobalActorReader.h"
 #include "TXTModels/TXTModel.h"
 #include "TXTModels/ThreeHitsPerEventModel.h"
+#include "TXTModels/TwoAnnihilationsHitsPerEventModel.h"
 #include <cstdlib>
 #include <string>
 
@@ -10,6 +11,8 @@ TXTModel* getModel( std::string model_name )
 {
  if ( model_name == "3HitsEvent" )
   return new ThreeHitsPerEventModel();
+ else if ( model_name == "2HitsAnnihilation" )
+  return new TwoAnnihilationsHitsPerEventModel();
  return nullptr;
 }
 
@@ -29,7 +32,7 @@ int main(int argc, char *argv[])
 
  TXTModel* model = getModel( model_name );
  model->setEventsNumberToSave( numbers_of_events_to_save );
- model->setEventsNumberToSave( numbers_of_events_to_save );
+ model->setOutputFileName( output_file_name );
 
  if ( model == nullptr )
  {

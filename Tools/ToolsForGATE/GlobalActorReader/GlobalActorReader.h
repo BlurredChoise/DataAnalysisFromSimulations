@@ -61,6 +61,8 @@ namespace ToolsForGATE
 
    void execute( std::string input_file_name, ToolsForAnalysis::AnalysisClass* ac, ToolsForAnalysis::AnalysisDataCreatorClass* dcc );
 
+   void stopJob();
+
   private:
    /** Try init variables. Use this function to read your variable.
     * You just need to add in this function : Notice(yourVariable.TryAttachToBranch(mTree, "yourBranchName");
@@ -82,6 +84,8 @@ namespace ToolsForGATE
    int fEntriesNumber;
    //Current index of entry
    int fCurrentEntryIndex;
+
+   bool fStopJob = false;
 
   public:
   /** GET-functions.
@@ -136,6 +140,7 @@ namespace ToolsForGATE
    double getGlobalTime() const;
 
    double getProperTime() const;
+
   private:
   /** VARIABLES
     * Declar here your variable by using template class Variable<yourType>

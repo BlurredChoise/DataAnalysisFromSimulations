@@ -11,6 +11,10 @@ namespace ToolsForAnalysis
    virtual ~AnalysisDataCreatorClass();
    virtual void extractDataFromEntry() = 0;
    virtual AnalysisData* getData() = 0;
+   void stopJob();
+   bool isJobFinished();
+  private:
+   bool fStopJob = false;
  };
 };
 

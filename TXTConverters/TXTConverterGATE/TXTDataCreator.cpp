@@ -16,6 +16,12 @@ TXTDataCreator::~TXTDataCreator() {}
 
 void TXTDataCreator::extractDataFromEntry()
 {
+ if ( isJobFinished() )
+ {
+  fReader->stopJob();
+  return;
+ }
+
  fData.setEnergyDeposition( fReader->getEnergyLossDuringProcess() );
 
  int eventID = fReader->getEventID();

@@ -43,9 +43,9 @@ class TXTModelReader: public ToolsForG4MC::G4MCReader
   
  private:
   TXTModel* fModel = nullptr;
-  std::string kModelNameParamKey = "TXTModelReader_ModelName";
-  std::string kOuputFileNameParamKey = "TXTModelReader_OuputFileTitle";
-  std::string kEventsNumberToSaveParamKey = "TXTModelReader_EventsNumberToSave";
+  std::string kModelNameParamKey = "TXTModelReader_ModelName_std::string";
+  std::string kOuputFileNameParamKey = "TXTModelReader_OuputFileTitle_std::strng";
+  std::string kEventsNumberToSaveParamKey = "TXTModelReader_EventsNumberToSave_int";
  
 };
 

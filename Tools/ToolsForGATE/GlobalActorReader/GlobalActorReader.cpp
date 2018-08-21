@@ -58,6 +58,8 @@ bool GlobalActorReader::read()
  return true;
 }
 
+void GlobalActorReader::stopJob() { fStopJob = true; }
+
 void GlobalActorReader::execute( std::string input_file_name, ToolsForAnalysis::AnalysisClass* ac, ToolsForAnalysis::AnalysisDataCreatorClass* dcc )
 {
  if ( !loadFile( input_file_name ) )
@@ -66,7 +68,11 @@ void GlobalActorReader::execute( std::string input_file_name, ToolsForAnalysis::
  {
   dcc->extractDataFromEntry();
   ac->analyzeEntry();
+  if ( fStopJob )
+   break;
  }
+ if ( pFile )
+  pFile->Close();
 }
 
 int GlobalActorReader::getEntriesNumber() const { return fEntriesNumber; }
