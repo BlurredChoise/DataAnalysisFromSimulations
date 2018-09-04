@@ -4,3 +4,7 @@
 /build/*
 /NEMAControlHistograms/build/*
 /TXTConverters/TXTConverterGATE/build/*
+/DetectionPerformance/build/*
+/DetectionPerformance/CMakeLists.txt
+/DetectionPerformance/EfficiencyPlotter/build/*
+/DetectionPerformance/EfficiencyPlotter/CMakeLists.txt
