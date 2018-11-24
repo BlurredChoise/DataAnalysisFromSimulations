@@ -6,6 +6,7 @@
 #include<string>
 #include "TH1F.h"
 #include "TFile.h"
+#include "TCanvas.h"
 
 class PlotEfficiency
 {
@@ -38,6 +39,10 @@ class PlotEfficiency
  private:
   std::map< std::string, std::vector<PlotValue> > fModels;//<model_name, values >
   TFile* fFile = nullptr;
+  TCanvas* c = nullptr;
+  const double fFontSize = 0.049;
+  const int fDigits = 2;
+  const double fTitleOffset = 0.78;
 };
 
 #endif

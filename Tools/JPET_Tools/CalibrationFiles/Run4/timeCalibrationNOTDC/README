@@ -1,0 +1,3 @@
+TimeConstansCalib_Run4all - no tdc time calibration
+TimeConstansCalib_Run4TOTcut - no tdc with cut on TOT from 5 to 50 ns
+TimeConstantsCalib_r4_reversed - no tdc calibration, based on reversed reference detector scan

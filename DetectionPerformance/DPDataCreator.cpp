@@ -10,7 +10,7 @@ About: This class read raw data from simulation and convert them to format usefu
 File: DPDataCreator.cpp
 **/
 
-DPDataCreator::DPDataCreator() {}
+DPDataCreator::DPDataCreator() { fGenerator.initGenerator(); }
 
 DPDataCreator::~DPDataCreator() {}
 
@@ -22,7 +22,7 @@ void DPDataCreator::extractDataFromEntry()
   return;
  }
 
- fData.setEnergyDeposition( fReader->getEnergyLossDuringProcess() );
+ fData.setEnergyDeposition( getSmearedEnergy( fReader->getEnergyLossDuringProcess() ) );
 
  int eventID = fReader->getEventID();
  int trackID = fReader->getTrackID();
@@ -61,3 +61,7 @@ void DPDataCreator::extractDataFromEntry()
 ToolsForAnalysis::AnalysisData* DPDataCreator::getData() { return &fData; }
 
 void DPDataCreator::setReader( ToolsForGATE::GlobalActorReader* reader ) { fReader = reader; }
+
+double DPDataCreator::getSmearedEnergy( double energy_keV ) { return fGenerator.getValueFromNormalDistribution( energy_keV, calcSigmaEnergy( energy_keV ) ); }
+
+double DPDataCreator::calcSigmaEnergy( double energy_keV ) { return ( 0.044 * energy_keV ) / TMath::Sqrt( energy_keV / 1000.0 ); } 

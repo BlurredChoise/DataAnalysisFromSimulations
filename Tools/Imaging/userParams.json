@@ -1,0 +1,15 @@
+{
+    "Save_Cotrol_Histograms_bool":true,
+    "TimeWindowCreator_MinTime_float":-650000.0,
+    "TimeWindowCreator_MaxTime_float":0.0,
+    "SignalFinder_EdgeMaxTime_float":4000.0,
+    "SignalFinder_LeadTrailMaxTime_float":30000.0,
+    "HitFinder_ABTimeDiff_float":6000.0,
+    "HitFinder_TimeWindowWidth_float":25000,
+    "EventFinder_MinimalEventSize_int":1,
+    "EventFinder_EventTime_float":200000.0,
+    "EventCategorizer_MinAnnihilationTOT_float":10000,
+    "EventCategorizer_MaxAnnihilationTOT_float":25000,
+    "EventCategorizer_MinDeexcitationTOT_float":30000,
+    "EventCategorizer_MaxDeexcitationTOT_float":50000 
+}

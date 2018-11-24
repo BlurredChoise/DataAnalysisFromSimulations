@@ -21,6 +21,7 @@ EfficiencyCounter::~EfficiencyCounter() {}
 void EfficiencyCounter::analyzeEntry()
 {
  DPData data = *( dynamic_cast< DPData* >( fCreator->getData() ) );
+ //++fCounterAE;
  if ( data.getEventID() != fEventID )
  {
   if ( fEventID > -1 )
@@ -109,6 +110,7 @@ void EfficiencyCounter::saveResultsToFile()
  std::cout << "fCounterFoundTracks     = " << fCounterFoundTracks << std::endl;
  std::cout << "fCounterScintilators    = " << fCounterScintilators << std::endl;
  std::cout << "fNumberOfDetectedEvents = " << fNumberOfDetectedEvents << std::endl;
+ std::cout << " fCounterAE " << fCounterAE << std::endl;
 
 }
 
@@ -118,10 +120,12 @@ void EfficiencyCounter::analyzeEvent()
 
  std::vector< unsigned int > raw_scatters( fNumberOfGammasGeneratedPerEvent, 0 );
  unsigned int index = 0;
-
+ assert(fDatas.size()>0);
+//assert(fNumberOfGammasGeneratedPerEvent ==2);
  for ( std::vector<DPData>::iterator it = fDatas.begin(); it != fDatas.end(); ++it )
  {
   index = static_cast<unsigned int>( it->getTrackID() - 1 );
+  //assert(it->getTrackID() ==1 ||it->getTrackID() ==2);
   raw_scatters[ index ] = TMath::Max( raw_scatters[ index ], it->getScatteringIndex() );
   TVector3 v = it->getHitPosition();
 
@@ -137,6 +141,8 @@ void EfficiencyCounter::analyzeEvent()
  if ( fDatas.size() < fNumberOfGammasGeneratedPerEvent )
   return;
  ++fCounterSize;
+
+
 
  std::vector<DPData* > hits( fNumberOfGammasGeneratedPerEvent, nullptr );
  
@@ -182,6 +188,10 @@ void EfficiencyCounter::analyzeEvent()
  }
 
  ++fNumberOfDetectedEvents;
+// if (hits.at(0)->getTrackID() ==hits.at(1)->getTrackID()) {
+ // return; 
+//} 
+++fCounterAE;
 
  std::vector< unsigned int > scatters( fNumberOfGammasGeneratedPerEvent, 0 );
 

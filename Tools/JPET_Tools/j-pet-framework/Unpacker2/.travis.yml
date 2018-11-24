@@ -1,0 +1,28 @@
+language: cpp
+sudo: required
+dist: trusty
+compiler:
+- gcc
+os:
+- linux
+install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y git
+  - sudo apt-get install -y libboost-all-dev 
+  - sudo apt-get install -y cmake 
+  - sudo apt-get install -y root-system
+script:
+    - cd Unpacker2
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make unpacker_tests
+    - cd tests
+    - ./run_tests.pl -f xml
+    - chmod a+x parseXML.py
+    - ./parseXML.py
+notifications:
+  email:
+    - aleksander.gajos@doctoral.uj.edu.pl
+    - wojciech.krzemien@ncbj.gov.pl
+    - dominik.nowogorski@gmail.com

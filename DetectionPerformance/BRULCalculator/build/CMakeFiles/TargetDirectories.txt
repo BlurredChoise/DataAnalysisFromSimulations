@@ -1,0 +1,3 @@
+/home/mateusz/Repositories/DataAnalysisFromSimulations/DetectionPerformance/BRULCalculator/build/CMakeFiles/rebuild_cache.dir
+/home/mateusz/Repositories/DataAnalysisFromSimulations/DetectionPerformance/BRULCalculator/build/CMakeFiles/brul_calc.dir
+/home/mateusz/Repositories/DataAnalysisFromSimulations/DetectionPerformance/BRULCalculator/build/CMakeFiles/edit_cache.dir

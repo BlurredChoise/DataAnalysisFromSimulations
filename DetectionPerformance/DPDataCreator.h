@@ -4,6 +4,7 @@
 #include "../Tools/ToolsForAnalysis/AnalysisData.h"
 #include "DPData.h"
 #include "../Tools/ToolsForGATE/GlobalActorReader/GlobalActorReader.h"
+#include "../Tools/ToolsForROOT/RandomGenerator.h"
 
 /**
 Author: Mateusz Bała
@@ -20,6 +21,9 @@ class DPDataCreator : public ToolsForAnalysis::AnalysisDataCreatorClass
   virtual ToolsForAnalysis::AnalysisData* getData();
 
   void setReader( ToolsForGATE::GlobalActorReader* reader );
+
+  double getSmearedEnergy( double energy_keV );
+  double calcSigmaEnergy( double energy_keV );
   
  private:
   DPData fData;
@@ -27,6 +31,7 @@ class DPDataCreator : public ToolsForAnalysis::AnalysisDataCreatorClass
   int fCurrentEventID = -1;
   int fCurrentTrackID = 0;
   unsigned int fCurrentScattersPerTrackIndex = 0;
+  ToolsForROOT::RandomGenerator fGenerator;
 };
 
 #endif

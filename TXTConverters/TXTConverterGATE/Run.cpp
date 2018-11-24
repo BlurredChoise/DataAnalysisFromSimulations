@@ -4,6 +4,7 @@
 #include "TXTModels/TXTModel.h"
 #include "TXTModels/ThreeHitsPerEventModel.h"
 #include "TXTModels/TwoAnnihilationsHitsPerEventModel.h"
+#include "TXTModels/TwoAnnihilationsHitsPerEventTimeSmearedModel.h"
 #include <cstdlib>
 #include <string>
 
@@ -13,6 +14,8 @@ TXTModel* getModel( std::string model_name )
   return new ThreeHitsPerEventModel();
  else if ( model_name == "2HitsAnnihilation" )
   return new TwoAnnihilationsHitsPerEventModel();
+ else if ( model_name == "2HitsAnnihilationSmeared" )
+  return new TwoAnnihilationsHitsPerEventTimeSmearedModel();
  return nullptr;
 }
 

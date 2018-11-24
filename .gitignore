@@ -8,3 +8,8 @@
 /DetectionPerformance/CMakeLists.txt
 /DetectionPerformance/EfficiencyPlotter/build/*
 /DetectionPerformance/EfficiencyPlotter/CMakeLists.txt
+/DetectionPerformance/BRULCalculator/build/*
+/DetectionPerformance/EnergyCutsPlotter/build/*
+/Tools/build/*
+/Tools/ToolsForGATE/GGA_To_JPET_Converter/build/*
+

@@ -63,6 +63,7 @@ class EfficiencyCounter : public ToolsForAnalysis::AnalysisClass
  unsigned int fCounterSize = 0;
  unsigned int fCounterFoundTracks = 0;
  unsigned int fCounterScintilators = 0;
+ unsigned int fCounterAE = 0;
  std::vector<unsigned int> fCounterTracks;
 
  private: //Histograms - control histograms
@@ -82,6 +83,7 @@ class EfficiencyCounter : public ToolsForAnalysis::AnalysisClass
 
  TH1F* h1GammaEnergyAll = nullptr;
  TH1F* h1GammaEnergyAccepted = nullptr;
+
 };
 
 #endif

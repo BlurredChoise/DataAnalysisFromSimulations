@@ -50,7 +50,7 @@ void TXTDataCreator::extractDataFromEntry()
  fData.setHitPosition( fReader->getProcessPosition() * 0.1 ); //conversion from milimeters to centimeters
  fData.setScintilatorPosition( fReader->getScintilatorPosition() * 0.1 ); //conversion from milimeters to centimeters
 
- fData.setTime( fReader->getGlobalTime() );
+ fData.setTime( fReader->getLocalTime() );
 
  fData.setEnergy( fReader->getEnergyBeforeProcess() );
 
